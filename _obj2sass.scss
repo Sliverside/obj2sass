@@ -40,9 +40,10 @@
     $new-list: ();
     @each $val in $v {
       @if type-of($val) == string and str-index($val, '_') == 1 {
-        $val: G($vars, $v);
+        $val: G($vars, $val);
       }
       @if type-of($val) == list {
+        @error $val;
         $val: place-hold-it($val, $vars);
       }
       $new-list: append($new-list, $val);
