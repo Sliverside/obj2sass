@@ -52,106 +52,106 @@ body {
     transform: translateY(-50%);
     background-color: #000; }
   .swt.swt-steeve {
-    width: 210px;
-    height: 97.5px; }
+    width: 140px;
+    height: 65px; }
     .swt.swt-steeve .toggle-on,
     .swt.swt-steeve .toggle-off {
-      width: 180px;
-      height: 82.5px;
-      top: 7.5px;
-      left: 15px; }
+      width: 120px;
+      height: 55px;
+      top: 5px;
+      left: 10px; }
       .swt.swt-steeve .toggle-on .content,
       .swt.swt-steeve .toggle-off .content {
-        line-height: 82.5px;
-        height: 82.5px;
-        width: 166.25px; }
+        line-height: 55px;
+        height: 55px;
+        width: 117.5px; }
     .swt.swt-steeve .toggle-on .content {
-      padding: 0 30px 0 50px;
-      left: calc(47.5px - 100%); }
+      padding: 0 20px 0 40px;
+      left: calc(25px - 100%); }
     .swt.swt-steeve .toggle-off .content {
-      padding: 0 50px 0 30px;
-      left: 33.75px; }
+      padding: 0 40px 0 20px;
+      left: 22.5px; }
     .swt.swt-steeve .toggle-handle {
-      width: 97.5px;
-      height: 97.5px;
+      width: 65px;
+      height: 65px;
       left: 0; }
     .swt.swt-steeve:active .toggle-handle {
       animation: 50ms swt-handle; }
     .swt.swt-steeve input[type="checkbox"]:checked ~ .toggle-on .content {
-      margin-left: 112.5px; }
+      margin-left: 75px; }
     .swt.swt-steeve input[type="checkbox"]:checked ~ .toggle-off .content {
-      margin-left: 112.5px; }
+      margin-left: 75px; }
     .swt.swt-steeve input[type="checkbox"]:checked ~ .toggle-handle {
-      margin-left: 112.5px; }
+      margin-left: 75px; }
   .swt.swt-perso {
-    width: 195px;
-    height: 70px; }
+    width: 150px;
+    height: 50px; }
     .swt.swt-perso .toggle-on,
     .swt.swt-perso .toggle-off {
-      width: 135px;
-      height: 60px;
+      width: 90px;
+      height: 40px;
       top: 0;
       left: 0px; }
       .swt.swt-perso .toggle-on .content,
       .swt.swt-perso .toggle-off .content {
-        line-height: 60px;
-        height: 60px;
-        width: 125px; }
+        line-height: 40px;
+        height: 40px;
+        width: 90px; }
     .swt.swt-perso .toggle-on .content {
-      padding: 0 15px 0 35px;
-      left: calc(40px - 100%); }
+      padding: 0 10px 0 30px;
+      left: calc(20px - 100%); }
     .swt.swt-perso .toggle-off .content {
-      padding: 0 35px 0 15px;
-      left: 30px; }
+      padding: 0 30px 0 10px;
+      left: 20px; }
     .swt.swt-perso .toggle-handle {
-      width: 52.5px;
-      height: 52.5px;
-      left: 3.75px; }
+      width: 35px;
+      height: 35px;
+      left: 2.5px; }
     .swt.swt-perso:active .toggle-handle {
       animation: 50ms swt-handle; }
     .swt.swt-perso input[type="checkbox"]:checked ~ .toggle-on .content {
-      margin-left: 75px; }
+      margin-left: 50px; }
     .swt.swt-perso input[type="checkbox"]:checked ~ .toggle-off .content {
-      margin-left: 75px; }
+      margin-left: 50px; }
     .swt.swt-perso input[type="checkbox"]:checked ~ .toggle-handle {
-      margin-left: 75px; }
+      margin-left: 50px; }
   .swt.swt-simple {
-    width: 135px;
-    height: 67.5px; }
+    width: 90px;
+    height: 45px; }
     .swt.swt-simple .toggle-on,
     .swt.swt-simple .toggle-off {
-      width: 105px;
-      height: 60px;
-      top: 3.75px;
-      left: 15px; }
+      width: 70px;
+      height: 40px;
+      top: 2.5px;
+      left: 10px; }
       .swt.swt-simple .toggle-on .content,
       .swt.swt-simple .toggle-off .content {
-        line-height: 60px;
-        height: 60px;
-        width: 125px; }
+        line-height: 40px;
+        height: 40px;
+        width: 90px; }
     .swt.swt-simple .toggle-on .content {
-      padding: 0 15px 0 35px;
+      padding: 0 10px 0 30px;
       left: calc(-20px - 100%); }
     .swt.swt-simple .toggle-off .content {
-      padding: 0 35px 0 15px;
+      padding: 0 30px 0 10px;
       left: 0px; }
     .swt.swt-simple .toggle-handle {
-      width: 30px;
-      height: 67.5px;
+      width: 20px;
+      height: 45px;
       left: 0; }
     .swt.swt-simple input[type="checkbox"]:checked ~ .toggle-on .content {
-      margin-left: 105px; }
+      margin-left: 70px; }
     .swt.swt-simple input[type="checkbox"]:checked ~ .toggle-off .content {
-      margin-left: 105px; }
+      margin-left: 70px; }
     .swt.swt-simple input[type="checkbox"]:checked ~ .toggle-handle {
-      margin-left: 105px; }
+      margin-left: 70px; }
 
 .swt.swt-steeve .toggle-on, .swt.swt-steeve .toggle-off {
   box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.1);
   border-radius: 55px; }
   .swt.swt-steeve .toggle-on .content, .swt.swt-steeve .toggle-off .content {
     color: #fff;
-    font-size: 30px;
+    font-size: 20px;
     transition: 500ms cubic-bezier(0.68, -0.55, 0.27, 1.55); }
 .swt.swt-steeve .toggle-on .content {
   background-color: #d4145a; }

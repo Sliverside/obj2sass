@@ -78,7 +78,7 @@ $switchers: (
   '#prefixe#': '.swt',
 
   'steeve': (
-    "_size-ratio": 1.5,
+    "_size-ratio": 1,
     "_side": 20px,
     "_width": 120px,
     "_height": 55px,
@@ -93,7 +93,7 @@ $switchers: (
       border-radius: '_height',
       '.content': (
         color:  #fff,
-        font-size: 30px,
+        font-size: 20px,
         transition: '_transition',
       ),
     ),
@@ -116,7 +116,7 @@ $switchers: (
     ),
   ),
   'perso': (
-    "_size-ratio": 1.5,
+    "_size-ratio": 1,
     "_side": 10px,
     "_width": 90px,
     "_height": 40px,
@@ -157,7 +157,7 @@ $switchers: (
     ),
   ),
   'simple': (
-    "_size-ratio": 1.5,
+    "_size-ratio": 1,
     "_side": 10px,
     "_width": 70px,
     "_height": 40px,
