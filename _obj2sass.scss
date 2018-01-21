@@ -1,0 +1,53 @@
+@import "../utilities/functions";
+
+@mixin obj2scss($object) {
+  $prefixe: G($object, "#prefixe#");
+  #{$prefixe} {
+    @include obj2scss-loop(G($object, "#base#"));
+    &#{$prefixe} {
+      @content;
+    }
+  }
+  @include obj2scss-loop($object, $prefixe);
+}
+
+@mixin obj2scss-loop($object, $prefixe: false, $this: false) {
+  @each $k, $v in $object {
+    @if str-index($k, '_') != 1 and str-slice($k, -1, -1) != '#' {
+      @if type-of($v) == map {
+        @if $prefixe {
+          #{$prefixe}#{$prefixe}-#{$k} {
+            @include obj2scss-loop($v, $this: $v);
+          }
+        }@else {
+          #{$k} {
+            @include obj2scss-loop($v, $this:$this);
+          }
+        }
+      }
+      @if type-of($v) != map {
+        $v: place-hold-it($v, $this);
+        #{$k}: $v;
+      }
+    }
+  }
+}
+
+@function place-hold-it($v, $vars) {
+  @if type-of($v) == string and str-index($v, '_') == 1 {
+    @return G($vars, $v);
+  }@else if type-of($v) == list {
+    $new-list: ();
+    @each $val in $v {
+      @if type-of($val) == string and str-index($val, '_') == 1 {
+        $val: G($vars, $v);
+      }
+      @if type-of($val) == list {
+        $val: place-hold-it($val, $vars);
+      }
+      $new-list: append($new-list, $val);
+    }
+    @return $new-list;
+  }
+  @return $v;
+}

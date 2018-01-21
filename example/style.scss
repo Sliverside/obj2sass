@@ -1,0 +1,270 @@
+@import "../utilities/functions";
+@import "../obj2sass";
+
+body {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  font-family: sans-serif;
+}
+
+@keyframes swt-handle {
+  0% {
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    transform: translateY(-50%) scale(0.9);
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+$switchers: (
+  '#base#': (
+    display: block,
+    z-index: 0,
+    box-sizing: border-box,
+    position: relative,
+    font-size: 0,
+    white-space: nowrap,
+    '&:nth-of-type(n+2)': (
+      margin-top: 40px,
+    ),
+    '*': (
+      box-sizing: border-box,
+    ),
+    'input[type="checkbox"]': (
+      position: absolute,
+      left: -9999px,
+    ),
+    '.toggle-on, .toggle-off, .toggle-handle': (
+      cursor: pointer,
+      position: absolute,
+    ),
+    '.toggle-on, .toggle-off': (
+      display: inline-block,
+      overflow: hidden,
+      '.content': (
+        z-index: -1,
+        font-size: 20px,
+        position: absolute,
+        display: inline-block,
+      ),
+    ),
+    '.toggle-on': (
+      '.content': (
+        text-align: left,
+        background-color: hsl(169, 87%, 36%),
+      ),
+    ),
+    '.toggle-off': (
+      '.content': (
+        text-align: right,
+        background-color: hsl(346, 81%, 45%),
+      ),
+    ),
+    '.toggle-handle': (
+      z-index: 1,
+      top: 50%,
+      transform: translateY(-50%),
+      background-color: #000,
+    ),
+  ),
+  '#prefixe#': '.swt',
+
+  'steeve': (
+    "_size-ratio": 1.5,
+    "_side": 20px,
+    "_width": 120px,
+    "_height": 55px,
+    "_handle-width": 65px,
+    "_handle-height": 65px,
+    "_handle-gap": - 65px /2 + 10px,
+    "_transition": 500ms cubic-bezier(0.68, -0.55, 0.27, 1.55),
+    "_handle-anim": true,
+
+    '.toggle-on, .toggle-off': (
+      box-shadow: inset 0 3px 10px rgba(#000, 0.1),
+      border-radius: '_height',
+      '.content': (
+        color:  #fff,
+        font-size: 30px,
+        transition: '_transition',
+      ),
+    ),
+    '.toggle-on': (
+      '.content': (
+        background-color: #d4145a,
+      ),
+    ),
+
+    '.toggle-off': (
+      '.content': (
+        background-color: #ff8db9,
+      ),
+    ),
+    '.toggle-handle': (
+      background-color: rgba(#932147, 1),
+      border-radius: 100%,
+      transition: '_transition',
+      box-shadow: 1px 1px 8px rgba(#000, 0.3),
+    ),
+  ),
+  'perso': (
+    "_size-ratio": 1.5,
+    "_side": 10px,
+    "_width": 90px,
+    "_height": 40px,
+    "_handle-width": 35px,
+    "_handle-height": 35px,
+    "_handle-gap": -30px/2 - 5px,
+    "_handle-anim": true,
+
+    color: #fff,
+    '.toggle-on .content, .toggle-off .content, .toggle-handle': (
+      transition: 400ms cubic-bezier(0.68, -0.55, 0.27, 1.55),
+    ),
+    '.toggle-on, .toggle-off': (
+      border-radius: 100px,
+    ),
+    '.toggle-on': (
+      border: 15px solid red,
+      box-shadow: inset 0 5px 10px rgba(#000, 0.1),
+      '.content': (
+        background-color: hsl(199, 100%, 54%),
+      ),
+    ),
+    '.toggle-off': (
+      '.content': (
+        background-color: hsl(0, 0%, 70%),
+      ),
+    ),
+    '.toggle-handle': (
+      background-color: rgba(#fff, 1),
+      box-shadow: 3px 5px 13px rgba(#000, 0.5),
+      border-radius: 100px,
+      border: 1px solid #333,
+    ),
+  ),
+  'simple': (
+    "_size-ratio": 1.5,
+    "_side": 10px,
+    "_width": 70px,
+    "_height": 40px,
+    "_handle-width": 20px,
+    "_handle-height": 45px,
+    "_handle-gap": 0px,
+
+    color: #fff,
+    '.toggle-on .content, .toggle-off .content, .toggle-handle': (
+      transition: 400ms cubic-bezier(0.68, -0.55, 0.27, 1.55),
+    ),
+    '.toggle-on, .toggle-off': (
+      box-shadow: inset 0 1px 2px rgba(#000, 0.1),
+    ),
+    '.toggle-handle': (
+      background-color: #333,
+    ),
+  ),
+);
+
+@include obj2scss($switchers) {
+  @each $k, $v in $switchers {
+    @if not(str_slice($k, 1, 1) == '#' and str_slice($k, -1, -1) == '#') {
+      $size-ratio: 1;
+      @if G($v, '_size-ratio') {
+        $size-ratio: G($v, '_size-ratio');
+      }
+      $side: G($v, '_side') * $size-ratio;
+      $height: G($v, '_height') * $size-ratio;
+      $width: G($v, '_width') * $size-ratio;
+      $handle-width: G($v, '_handle-width') * $size-ratio;
+      $handle-height: G($v, '_handle-height') * $size-ratio;
+      $handle-gap: G($v, '_handle-gap') * $size-ratio;
+      $transition: G($v, '_transition');
+      $handle-in-gap: 0;
+      $handle-vertical-out-part: $handle-height - $height;
+      $handle-negative-gap: 0;
+      $handle-anim: false;
+      @if G($v, _handle-anim) {
+        $handle-anim: G($v, _handle-anim);
+      }
+
+      $margin: 20px;
+
+      @if 2*$handle-gap + $handle-width < 0 {
+        $handle-in-gap: - (2*$handle-gap + $handle-width);
+      }
+      @if $handle-vertical-out-part < 0 {
+        $handle-vertical-out-part: 0;
+      }
+      @if $handle-gap < 0 {
+         $handle-negative-gap: - $handle-gap;
+      }
+      &-#{$k} {
+        width: $width + 2*$handle-gap + $handle-width + $handle-in-gap;
+        height: $height + $handle-vertical-out-part;
+
+        .toggle-on,
+        .toggle-off {
+          width: $width;
+          height: $height;
+          top: $handle-vertical-out-part / 2;
+          left: $handle-gap +$handle-width/2 + $handle-in-gap / 2;
+          .content {
+            line-height: $height;
+            height: $height;
+            width: $width + $handle-gap + $margin;
+          }
+        }
+
+        .toggle-on {
+          .content {
+            padding: 0 $side 0 $side + $margin;
+            left: calc(#{- $handle-gap + $handle-negative-gap - $margin} - 100%);
+          }
+        }
+
+        .toggle-off {
+          .content {
+            padding: 0 $side + $margin 0 $side;
+            left: - $handle-gap;
+          }
+        }
+
+        .toggle-handle {
+          width: $handle-width;
+          height: $handle-height;
+          left: $handle-in-gap/2;
+        }
+
+        @if $handle-anim {
+          &:active .toggle-handle {
+            animation: 50ms swt-handle;
+          }
+        }
+
+        input[type="checkbox"]:checked {
+          ~ .toggle-on {
+            .content {
+              margin-left: #{$width + $handle-gap - $handle-negative-gap};
+            }
+          }
+          ~ .toggle-off {
+            .content {
+              margin-left: #{$width + $handle-gap * 2};
+            }
+          }
+          ~ .toggle-handle {
+            margin-left: #{$width + $handle-gap * 2};
+          }
+        }
+      }
+    }
+  }
+}
