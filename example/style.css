@@ -1,199 +1,79 @@
-body {
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
-  min-height: 100vh;
-  font-family: sans-serif; }
+/*
+Error: ("max": false, "min": 1800px, "v": 20px) isn't a valid CSS value.
+        on line 393 of C:\xampp\htdocs\lab\obj2sass\example\style.scss
 
-@keyframes swt-handle {
-  0% {
-    transform: translateY(-50%) scale(1); }
-  50% {
-    transform: translateY(-50%) scale(0.9); }
-  100% {
-    transform: translateY(-50%) scale(1); } }
-.swt {
-  display: block;
-  z-index: 0;
-  box-sizing: border-box;
-  position: relative;
-  font-size: 0;
-  white-space: nowrap; }
-  .swt:nth-of-type(n+2) {
-    margin-top: 40px; }
-  .swt * {
-    box-sizing: border-box; }
-  .swt input[type="checkbox"] {
-    position: absolute;
-    left: -9999px; }
-  .swt .toggle-on, .swt .toggle-off, .swt .toggle-handle {
-    cursor: pointer;
-    position: absolute; }
-  .swt .toggle-on, .swt .toggle-off {
-    display: inline-block;
-    overflow: hidden; }
-    .swt .toggle-on .content, .swt .toggle-off .content {
-      z-index: -1;
-      font-size: 20px;
-      position: absolute;
-      display: inline-block; }
-  .swt .toggle-on .content {
-    text-align: left;
-    background-color: #0cac8e; }
-  .swt .toggle-off .content {
-    text-align: right;
-    background-color: #d01641; }
-  .swt .toggle-handle {
-    z-index: 1;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #000; }
-  .swt.swt-steeve {
-    width: 140px;
-    height: 65px; }
-    .swt.swt-steeve .toggle-on,
-    .swt.swt-steeve .toggle-off {
-      width: 120px;
-      height: 55px;
-      top: 5px;
-      left: 10px; }
-      .swt.swt-steeve .toggle-on .content,
-      .swt.swt-steeve .toggle-off .content {
-        line-height: 55px;
-        height: 55px;
-        width: 117.5px; }
-    .swt.swt-steeve .toggle-on .content {
-      padding: 0 20px 0 40px;
-      left: calc(25px - 100%); }
-    .swt.swt-steeve .toggle-off .content {
-      padding: 0 40px 0 20px;
-      left: 22.5px; }
-    .swt.swt-steeve .toggle-handle {
-      width: 65px;
-      height: 65px;
-      left: 0; }
-    .swt.swt-steeve:active .toggle-handle {
-      animation: 50ms swt-handle; }
-    .swt.swt-steeve input[type="checkbox"]:checked ~ .toggle-on .content {
-      margin-left: 75px; }
-    .swt.swt-steeve input[type="checkbox"]:checked ~ .toggle-off .content {
-      margin-left: 75px; }
-    .swt.swt-steeve input[type="checkbox"]:checked ~ .toggle-handle {
-      margin-left: 75px; }
-  .swt.swt-perso {
-    width: 150px;
-    height: 50px; }
-    .swt.swt-perso .toggle-on,
-    .swt.swt-perso .toggle-off {
-      width: 90px;
-      height: 40px;
-      top: 0;
-      left: 0px; }
-      .swt.swt-perso .toggle-on .content,
-      .swt.swt-perso .toggle-off .content {
-        line-height: 40px;
-        height: 40px;
-        width: 90px; }
-    .swt.swt-perso .toggle-on .content {
-      padding: 0 10px 0 30px;
-      left: calc(20px - 100%); }
-    .swt.swt-perso .toggle-off .content {
-      padding: 0 30px 0 10px;
-      left: 20px; }
-    .swt.swt-perso .toggle-handle {
-      width: 35px;
-      height: 35px;
-      left: 2.5px; }
-    .swt.swt-perso:active .toggle-handle {
-      animation: 50ms swt-handle; }
-    .swt.swt-perso input[type="checkbox"]:checked ~ .toggle-on .content {
-      margin-left: 50px; }
-    .swt.swt-perso input[type="checkbox"]:checked ~ .toggle-off .content {
-      margin-left: 50px; }
-    .swt.swt-perso input[type="checkbox"]:checked ~ .toggle-handle {
-      margin-left: 50px; }
-  .swt.swt-simple {
-    width: 90px;
-    height: 45px; }
-    .swt.swt-simple .toggle-on,
-    .swt.swt-simple .toggle-off {
-      width: 70px;
-      height: 40px;
-      top: 2.5px;
-      left: 10px; }
-      .swt.swt-simple .toggle-on .content,
-      .swt.swt-simple .toggle-off .content {
-        line-height: 40px;
-        height: 40px;
-        width: 90px; }
-    .swt.swt-simple .toggle-on .content {
-      padding: 0 10px 0 30px;
-      left: calc(-20px - 100%); }
-    .swt.swt-simple .toggle-off .content {
-      padding: 0 30px 0 10px;
-      left: 0px; }
-    .swt.swt-simple .toggle-handle {
-      width: 20px;
-      height: 45px;
-      left: 0; }
-    .swt.swt-simple input[type="checkbox"]:checked ~ .toggle-on .content {
-      margin-left: 70px; }
-    .swt.swt-simple input[type="checkbox"]:checked ~ .toggle-off .content {
-      margin-left: 70px; }
-    .swt.swt-simple input[type="checkbox"]:checked ~ .toggle-handle {
-      margin-left: 70px; }
+388: @each $bar, $v in $bars {
+389:   $width: var($v, 'width', 0px);
+390:   $height: var($v, 'height', 0px);
+391:   $color: var($v, 'color', black);
+392:   .bar.bar-#{$bar} {
+393:     width: $width;
+394:     height: $height;
+395:     background-color: $color;
+396:   }
+397: }
 
-.swt.swt-steeve .toggle-on, .swt.swt-steeve .toggle-off {
-  box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 55px; }
-  .swt.swt-steeve .toggle-on .content, .swt.swt-steeve .toggle-off .content {
-    color: #fff;
-    font-size: 20px;
-    transition: 500ms cubic-bezier(0.68, -0.55, 0.27, 1.55); }
-.swt.swt-steeve .toggle-on .content {
-  background-color: #d4145a; }
-.swt.swt-steeve .toggle-off .content {
-  background-color: #ff8db9; }
-.swt.swt-steeve .toggle-handle {
-  background-color: #932147;
-  border-radius: 100%;
-  transition: 500ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
-  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3); }
-
-.swt.swt-perso {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  border-radius: 500px;
-  border-width: 5px 30px;
-  border-style: solid;
-  border-color: #d9d9d9;
-  background-color: #d9d9d9;
-  color: #fff; }
-  .swt.swt-perso .toggle-on .content, .swt.swt-perso .toggle-off .content, .swt.swt-perso .toggle-handle {
-    transition: 400ms cubic-bezier(0.68, -0.55, 0.27, 1.55); }
-  .swt.swt-perso .toggle-on, .swt.swt-perso .toggle-off {
-    border-radius: 100px; }
-  .swt.swt-perso .toggle-on {
-    box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.3); }
-    .swt.swt-perso .toggle-on .content {
-      background-color: #14b5ff; }
-  .swt.swt-perso .toggle-off .content {
-    background-color: #b3b3b3; }
-  .swt.swt-perso .toggle-handle {
-    background-color: white;
-    box-shadow: 3px 5px 13px rgba(0, 0, 0, 0.5);
-    border-radius: 100px;
-    border: 5px solid #f2f2f2; }
-
-.swt.swt-simple {
-  color: #fff; }
-  .swt.swt-simple .toggle-on .content, .swt.swt-simple .toggle-off .content, .swt.swt-simple .toggle-handle {
-    transition: 400ms cubic-bezier(0.68, -0.55, 0.27, 1.55); }
-  .swt.swt-simple .toggle-on, .swt.swt-simple .toggle-off {
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); }
-  .swt.swt-simple .toggle-handle {
-    background-color: #333; }
-
-/*# sourceMappingURL=style.css.map */
+Backtrace:
+C:\xampp\htdocs\lab\obj2sass\example\style.scss:393
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/value/map.rb:52:in `to_s'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/value/list.rb:58:in `block in to_s'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/value/list.rb:58:in `map'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/value/list.rb:58:in `to_s'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:403:in `visit_prop'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:135:in `with_frame'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:444:in `block (2 levels) in visit_rule'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:444:in `map'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:444:in `block in visit_rule'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:442:in `visit_rule'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:135:in `with_frame'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:244:in `block (3 levels) in visit_each'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:244:in `map'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:244:in `block (2 levels) in visit_each'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:236:in `map'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:236:in `block in visit_each'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:235:in `visit_each'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:135:in `with_frame'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:52:in `map'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:171:in `block in visit_children'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:170:in `visit_children'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:190:in `visit_root'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:161:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:10:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/root_node.rb:36:in `css_tree'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/engine.rb:307:in `render_with_sourcemap'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/sass_scss.rb:391:in `run'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/sass_scss.rb:63:in `process_result'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/base.rb:52:in `parse'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/base.rb:19:in `parse!'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/bin/sass:13:in `<top (required)>'
+C:/Program Files (x86)/Koala/bin/sass:22:in `load'
+C:/Program Files (x86)/Koala/bin/sass:22:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: (\"max\": false, \"min\": 1800px, \"v\": 20px) isn't a valid CSS value.\A         on line 393 of C:\xampp\htdocs\lab\obj2sass\example\style.scss\A \A 388: @each $bar, $v in $bars {\A 389:   $width: var($v, 'width', 0px);\A 390:   $height: var($v, 'height', 0px);\A 391:   $color: var($v, 'color', black);\A 392:   .bar.bar-#{$bar} {\A 393:     width: $width;\A 394:     height: $height;\A 395:     background-color: $color;\A 396:   }\A 397: }"; }

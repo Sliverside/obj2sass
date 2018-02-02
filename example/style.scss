@@ -306,3 +306,92 @@ $switchers: (
     }
   }
 }
+
+$bars: (
+  '1': (
+    'width': (
+      ( 'max': false, 'min': 1800px, 'v': 20px),
+      ( 'max': 1800px, 'min': 1600px, 'v': 60px),
+    ),
+    'height': 5px,
+    'color': red,
+  ),
+  // '2': (
+  //   'width': 50px,
+  //   'height': 5px,
+  //   'color': blue,
+  // ),
+);
+
+@function var($map, $var-name, $else: false) {
+  @if G($map, $var-name) {
+    @return G($map, $var-name);
+  }@else if $else {
+    @return $else;
+  }
+}
+
+@function remove-nth($list, $index) {
+  $result: null;
+
+  @if type-of($index) != number {
+    @warn "$index: #{quote($index)} is not a number for `remove-nth`.";
+  }
+
+  @else if $index == 0 {
+    @warn "List index 0 must be a non-zero integer for `remove-nth`.";
+  }
+
+  @else if abs($index) > length($list) {
+    @warn "List index is #{$index} but list is only #{length($list)} item long for `remove-nth`.";
+  }
+
+  @else {
+    $result: ();
+    $index: if($index < 0, length($list) + $index + 1, $index);
+
+    @for $i from 1 through length($list) {
+      @if $i != $index {
+        $result: append($result, nth($list, $i));
+      }
+    }
+  }
+
+  @return $result;
+}
+
+@function obj2bp($obj) { //object to breakpoints
+  @each $name, $vars in $obj {
+    $breakpoints:();
+    @each $k, $v in $vars {
+      @if type-of($v) == map {
+        @each $key, $val in $v {
+          $bpindex: 0;
+          $match-find: false;
+          @each $bp in $breakpoints {
+            $bpindex: $index + 1;
+            @if G($v, 'max') == G($bp, 'max') and G($v, 'min') == G($bp, 'min') {
+              $match-find: true;
+              $bp: S($bp, $key, G($v, 'value'));
+              $breakpoints: remove-nth($breakpoints, $bpindex);
+            }@else {
+              $bp: ('max': '#{G($v, 'max')}', 'min': '#{G($v, 'min')}', '#{$key}': '#{G($v, 'value')}')
+            }
+          }
+          $breakpoints: append($breakpoints, $bp);
+        }
+      }
+    }
+  }
+}
+
+@each $bar, $v in $bars {
+  $width: var($v, 'width', 0px);
+  $height: var($v, 'height', 0px);
+  $color: var($v, 'color', black);
+  .bar.bar-#{$bar} {
+    width: $width;
+    height: $height;
+    background-color: $color;
+  }
+}
